@@ -5,6 +5,7 @@ import ErrorPage from './components/ErrorPage';
 import LoadingPage from './components/LoadingPage';
 import TodayWeather from './components/TodayWeather';
 import WeeklyForecast from './components/WeeklyForecast';
+import SplashIcon from './assets/splash-icon.svg';
 
 function App() {
   const [todayWeather, setTodayWeather] = useState(null);
@@ -29,7 +30,7 @@ function App() {
     }}
   >
     <SvgIcon
-      component={icon}
+      component={SplashIcon}
       inheritViewBox
       sx={{ fontSize: { xs: '100px', sm: '120px', md: '140px' } }}
     />

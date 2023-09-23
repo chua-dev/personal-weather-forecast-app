@@ -1,6 +1,6 @@
-import { Box, Typography, ErrorOutlineIcon } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
-
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 function ErrorPage(props) {
     return (

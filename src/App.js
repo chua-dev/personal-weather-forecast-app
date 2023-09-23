@@ -5,7 +5,8 @@ import ErrorPage from './components/ErrorPage';
 import LoadingPage from './components/LoadingPage';
 import TodayWeather from './components/TodayWeather';
 import WeeklyForecast from './components/WeeklyForecast';
-import SplashIcon from './assets/splash-icon.svg';
+import { ReactComponent as SplashIcon } from './assets/splash-icon.svg';
+import Search from './components/Search/Search';
 
 function App() {
   const [todayWeather, setTodayWeather] = useState(null);
@@ -111,13 +112,13 @@ if (isLoading) {
 
 
   return (
-    <div className="App">
-      <ErrorPage
-        margin="3rem auto"
-        flex="inherit"
-        errorMessage="Something went wrong"
-      />
-    </div>
+    <Grid container columnSpacing={2}>
+      <Grid item xs={12}>
+        <Search />
+      </Grid>
+      {weatherContent}
+
+    </Grid>
   );
 }
 

@@ -1,12 +1,15 @@
 import './App.css';
 import React, { useState } from 'react';
-import { Box, SvgIcon, Typography, Grid } from '@mui/material';
+import { Box, SvgIcon, Typography, Grid, Container, Link } from '@mui/material';
 import ErrorPage from './components/ErrorPage';
 import LoadingPage from './components/LoadingPage';
 import TodayWeather from './components/TodayWeather';
 import WeeklyForecast from './components/WeeklyForecast';
 import { ReactComponent as SplashIcon } from './assets/splash-icon.svg';
+import WeatherLogo from './assets/logo.png';
 import Search from './components/Search/Search';
+import DateTimeGMT from './components/Reusable/DateTimeGMT';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 function App() {
   const [todayWeather, setTodayWeather] = useState(null);
@@ -112,13 +115,68 @@ if (isLoading) {
 
 
   return (
-    <Grid container columnSpacing={2}>
-      <Grid item xs={12}>
-        <Search />
-      </Grid>
-      {weatherContent}
+    <Container
+      sx={{
+        maxWidth: { xs: '95%', sm: '80%', md: '1100px' },
+        width: '100%',
+        height: '100%',
+        margin: '0 auto',
+        padding: '1rem 0 3rem',
+        marginBottom: '1rem',
+        borderRadius: {
+          xs: 'none',
+          sm: '0 0 1rem 1rem',
+        },
+        boxShadow: {
+          xs: 'none',
+          sm: 'rgba(0,0,0, 0.5) 0px 10px 15px -3px, rgba(0,0,0, 0.5) 0px 4px 6px -2px',
+        },
+      }}
+    >
+      <Grid container columnSpacing={2}>
+        <Grid item xs={12}>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{
+              width: '100%',
+              marginBottom: '1rem',
+            }}
+          >
+            <Box
+              component='img'
+              sx={{
+                height: { xs: '16px', sm: '22px', md: '26px' },
+                width: 'auto',
+              }}
+              alt='logo'
+              src={WeatherLogo}
+            />
 
-    </Grid>
+            <DateTimeGMT />
+            <Link
+              href="https://github.com/chua-dev"
+              target="_blank"
+              underline="none"
+              sx={{ display: 'flex' }}
+            >
+              <GitHubIcon
+                sx={{
+                  fontSize: { xs:'20px', sm: '22px', md: '26px'},
+                  color: 'white',
+                  '&:hover': {color: '#2d95bd'}
+                }}
+              />
+            </Link>
+
+          </Box>
+          <Search />
+        </Grid>
+        {weatherContent}
+      </Grid>
+    </Container>
+    
   );
 }
 
